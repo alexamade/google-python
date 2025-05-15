@@ -103,14 +103,17 @@ def extract_names_and_ranks(html_file: str) -> List[Tuple[str, str]]:
         
         # Extract names and ranks
         rows = soup.find_all('tr', align='right')
+        if rows:
+            print(f"Debug: First row HTML: {rows[0]}")
         names_ranks = []
         for row in rows:
-            cells = row.find_all('td')
+            cells = row.find_all('td', recursive=False)
+            # print(f"Debug: Found {len(cells)} cells in row")
             if len(cells) == 3:
-              rank = cells[0].text
-              male_name = cells[1].text
-              female_name = cells[2].text
-              names_ranks.extend([(male_name, rank), (female_name, rank)])
+                rank = cells[0].text
+                male_name = cells[1].text
+                female_name = cells[2].text
+                names_ranks.extend([(male_name, rank), (female_name, rank)])
         print (f"Year: {year}")
         print("Names and ranks:")
         for name, rank in names_ranks:
@@ -122,55 +125,33 @@ html_file_names = get_file_names(directory)
 sample_file = directory / 'baby1990.html'  # Combine paths properly
 extract_names_and_ranks(str(sample_file))
 
-# get_file_names_extract_year('/Users/alexander.smith/git/google-python-exercises/babynames/')
-# extract_names_and_ranks('/Users/alexander.smith/git/google-python-exercises/babynames/baby1990.html')
-# for html_file in html_file_names:
-#     year, names_ranks = extract_names_and_ranks(html_file)
-#     print(f"Year: {year}")
-#     for name, rank in names_ranks:
-#         print(f"{name}: {rank}")
-    
-
-
-    
-
-
-# def extract_names(filename):
-#   """
-#   Given a file name for baby.html, returns a list starting with the year string
-#   followed by the name-rank strings in alphabetical order.
-#   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
-#   """
-#   with open(filename, 'r') as f:
-#     data_stream = 
-#   return
 
 
 
 
-# def main():
-#   # This command-line parsing code is provided.
-#   # Make a list of command line arguments, omitting the [0] element
-#   # which is the script itself.
-#   # args = sys.argv[1:]
+def main():
+  # This command-line parsing code is provided.
+  # Make a list of command line arguments, omitting the [0] element
+  # which is the script itself.
+  args = sys.argv[1:]
 
-#   # if not args:
-#   #   print('usage: [--summaryfile] file [file ...]')
-#   #   sys.exit(1)
+  if not args:
+    print('usage: [--summaryfile] file [file ...]')
+    sys.exit(1)
 
-#   # Notice the summary flag and remove it from args if it is present.
-#   # summary = False
-#   # if args[0] == '--summaryfile':
-#   #   summary = True
-#   #   del args[0]
+  # Notice the summary flag and remove it from args if it is present.
+  summary = False
+  if args[0] == '--summaryfile':
+    summary = True
+    del args[0]
 
-#   list_filenames('/Users/alexander.smith/git/google-python-exercises/babynames')
+  
 
-#   # Process each filename in args, extracting the names and ranking
-#   # +++your code here+++
-#   # For each filename, get the names, then either print the text output
-#   # or write it to a summary file
+  # Process each filename in args, extracting the names and ranking
+  # +++your code here+++
+  # For each filename, get the names, then either print the text output
+  # or write it to a summary file
 
 
-# if __name__ == '__main__':
-#   main()
+if __name__ == '__main__':
+  main()
