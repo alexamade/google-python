@@ -8,7 +8,6 @@
 
 import sys
 import re
-import os.path
 from pathlib import Path
 from bs4 import BeautifulSoup
 from typing import List, Tuple
@@ -129,29 +128,29 @@ extract_names_and_ranks(str(sample_file))
 
 
 
-def main():
-  # This command-line parsing code is provided.
-  # Make a list of command line arguments, omitting the [0] element
-  # which is the script itself.
-  args = sys.argv[1:]
+# def main():
+#   # This command-line parsing code is provided.
+#   # Make a list of command line arguments, omitting the [0] element
+#   # which is the script itself.
+#   args = sys.argv[1:]
 
-  if not args:
-    print('usage: [--summaryfile] file [file ...]')
-    sys.exit(1)
+#   if not args:
+#     print('usage: [--summaryfile] file [file ...]')
+#     sys.exit(1)
 
-  # Notice the summary flag and remove it from args if it is present.
-  summary = False
-  if args[0] == '--summaryfile':
-    summary = True
-    del args[0]
+#   # Notice the summary flag and remove it from args if it is present.
+#   summary = False
+#   if args[0] == '--summaryfile':
+#     summary = True
+#     del args[0]
 
   
 
-  # Process each filename in args, extracting the names and ranking
-  # +++your code here+++
-  # For each filename, get the names, then either print the text output
-  # or write it to a summary file
+#   # Process each filename in args, extracting the names and ranking
+#   # +++your code here+++
+#   # For each filename, get the names, then either print the text output
+#   # or write it to a summary file
 
 
-if __name__ == '__main__':
-  main()
+# if __name__ == '__main__':
+#   main()
